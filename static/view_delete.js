@@ -1,4 +1,4 @@
-const api = "https//127.0.0.1:5000/api/jobs";
+const api = "https://job-render.onrender.com/api/jobs";
 
 async function fetchJobs() {
   const res = await fetch(api);
