@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Job - Job Application Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+    }
+    
+   
+  </style>
+</head>
+<body>
+
+     <div id="message" style="color: green; display: none;"></div>
+
+  <h1>Add New Job Application</h1>
+
+  <form id="jobForm">
+  <label for="company">Company:</label>
+  <input type="text" id="company" name="company" required><br><br>
+
+  <label for="role">Role:</label>
+  <input type="text" id="role" name="role" required><br><br>
+
+  <label for="status">Status:</label>
+  <input type="text" id="status" name="status" required><br><br>
+
+  <label for="dateApplied">Date Applied:</label>
+  <input type="date" id="dateApplied" name="dateApplied" required><br><br>
+
+  <label for="notes">Notes:</label>
+  <textarea id="notes" name="notes"></textarea><br><br>
+
+  <button type="submit">Add Job</button>
+</form>
+
+
+  <a href="/">← Back to Dashboard</a>
+
+  
+  <script src="{{ url_for('static', filename='add.js') }}"></script>
+    <
+
+
+  
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Job</title>
+</head>
