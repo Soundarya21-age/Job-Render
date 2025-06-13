@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Application Tracker</title>
+</head>
+<body>
+  <h1>Job Application Tracker</h1>
+
+  <form id="jobForm">
+    <input id="company" placeholder="Company" required><br>
+    <input id="role" placeholder="Role" required><br>
+    <input id="status" placeholder="Status" required><br>
+    <input id="dateApplied" type="date" required><br>
+    <textarea id="notes" placeholder="Notes"></textarea><br>
+    <button type="submit">Save Job</button>
+    <button type="button" id="cancelEdit" style="display:none;">Cancel Edit</button>
+  </form>
+
+  <h2>Job List</h2>
+  <div id="jobList"></div>
+
+  <script src="index.js"></script>
+</body>
+</html>
