@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Job Application Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #dbeafe, #e0f7fa);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background-color: #45a049;
+    }
+
+    /* Logo */
+    .logo {
+      width: 60px;
+      margin-bottom: 20px;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+    
+
+  </style>
+</head>
+<body>
+ 
+
+  <div class="container">
+    <!-- Logo -->
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo" class="logo">
+
+    <h1>Welcome to Job Application Tracker</h1>
+    <p>Stay organized. Stay persistent. Your dream job is closer than you think.</p>
+
+    <div class="nav-buttons">
+      <a href="/add">➕ Add Job</a>
+      <a href="/view-delete">📋 View/Delete Jobs</a>
+    </div>
+
+   
+
+</body>
+</html>

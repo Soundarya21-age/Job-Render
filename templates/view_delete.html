@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View/Delete Jobs - Job Application Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .job-card {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .job-card h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    .job-card p {
+      margin: 5px 0;
+    }
+
+    .job-card button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .job-card button:hover {
+      background-color: #cc0000;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+
+  <h1>View & Delete Job Applications</h1>
+
+  <div id="message" style="color: green; font-weight: bold; margin-bottom: 10px;"></div>
+  <div id="jobList"></div>
+
+  <br>
+  <a href="/">← Back to Dashboard</a>
+
+  <script>
+    const api = 'http://127.0.0.1:5000/api/jobs';
+
+    async function fetchJobs() {
+      const res = await fetch(api);
+      const jobs = await res.json();
+
+      const jobList = document.getElementById('jobList');
+      jobList.innerHTML = '';
+jobList.style.display = "flex";
+jobList.style.flexWrap = "wrap";
+jobList.style.gap = "20px";
+
+
+      jobs.forEach(job => {
+        const jobDiv = document.createElement('div');
+        jobDiv.style.border = '1px solid #ccc';
+        jobDiv.style.padding = '10px';
+        jobDiv.style.marginBottom = '10px';
+        jobDiv.innerHTML = `
+  <p><strong>Company:</strong> ${job.company}</p>
+  <p><strong>Role:</strong> ${job.role}</p>
+  <p><strong>Status:</strong> ${job.status}</p>
+  <p><strong>Date Applied:</strong> ${job.dateApplied}</p>
+  <p><strong>Notes:</strong> ${job.notes}</p>
+  <div style="margin-top: 10px;">
+    <a href="/update?id=${job.jobId}" style="display: inline-block; padding: 5px 12px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px;">Update</a>
+    <button onclick="deleteJob('${job.jobId}')" style="padding: 5px 12px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">Delete</button>
+  </div>
+  <hr>
+`;
+
+        jobList.appendChild(jobDiv);
+      });
+    }
+
+    async function deleteJob(id) {
+      const res = await fetch(`${api}/${id}`, { method: 'DELETE' });
+
+      if (res.ok) {
+        showMessage('Job deleted successfully!');
+        fetchJobs();
+      } else {
+        showMessage('Failed to delete job.');
+      }
+    }
+
+    function showMessage(message) {
+      const msgDiv = document.getElementById('message');
+      msgDiv.textContent = message;
+      msgDiv.style.display = 'block';
+
+      setTimeout(() => {
+        msgDiv.style.display = 'none';
+      }, 3000);
+    }
+
+    fetchJobs();
+  </script>
+  </body>
+  </html>
